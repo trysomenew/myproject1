@@ -1,5 +1,5 @@
 // Replace with your Render backend URL
-const backendURL = 'https://your-backend.onrender.com';
+const backendURL = 'https://myproject1-6cle.onrender.com';
 
 function addPerson() {
   const name = document.getElementById('name').value;
