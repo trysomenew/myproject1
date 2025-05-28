@@ -7,10 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // 👇 Use your real connection string here
-mongoose.connect('mongodb+srv://admin:admin@966444@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB Connected'))
+mongoose.connect('mongodb+srv://admin:admin@966444@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage').then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
 const personSchema = new mongoose.Schema({
