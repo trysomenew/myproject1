@@ -21,7 +21,7 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema);
 
 // Add new person
-app.post('/add', async (req, res) => {
+app.post('/addPerson', async (req, res) => {
   const { name, age } = req.body;
   const person = new Person({ name, age });
   await person.save();
