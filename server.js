@@ -9,7 +9,7 @@ app.use(express.json());
 // 👇 Use your real connection string here
 
 
-mongoose.connect('mongodb+srv://admin:admin@1234@cluster0.abcd1.mongodb.net/peopleDB')
+mongoose.connect('mongodb+srv://admin:admin1234@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage')
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
