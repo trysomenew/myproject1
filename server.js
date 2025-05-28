@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // 👇 Use your real connection string here
-const mongoose = require('mongoose');
+
 
 mongoose.connect('mongodb+srv://admin:admin@1234@cluster0.abcd1.mongodb.net/peopleDB')
   .then(() => console.log("MongoDB connected"))
