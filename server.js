@@ -1,51 +1,39 @@
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Atlas connection string
-const mongoURI = 'mongodb+srv://admin:admin@966444@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage'; // Replace with your real connection string
-
-mongoose.connect(mongoURI, {
+// 👇 Use your real connection string here
+mongoose.connect('mongodb+srv://admin:admin@966444@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('Connected to MongoDB');
-}).catch((err) => {
-  console.error('MongoDB connection error:', err);
-});
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 const personSchema = new mongoose.Schema({
   name: String,
   age: Number
 });
-
 const Person = mongoose.model('Person', personSchema);
 
-app.post('/addPerson', async (req, res) => {
+// Add new person
+app.post('/add', async (req, res) => {
   const { name, age } = req.body;
-  try {
-    const newPerson = new Person({ name, age });
-    await newPerson.save();
-    res.json({ message: 'Person added!' });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to save person' });
-  }
+  const person = new Person({ name, age });
+  await person.save();
+  res.json({ message: 'Person added' });
 });
 
+// Get all people
 app.get('/people', async (req, res) => {
-  try {
-    const people = await Person.find();
-    res.json(people);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch people' });
-  }
+  const people = await Person.find();
+  res.json(people);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
