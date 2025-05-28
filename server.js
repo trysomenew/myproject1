@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Atlas connection string
-const mongoURI = 'your-mongodb-atlas-connection-string'; // Replace with your real connection string
+const mongoURI = 'mongodb+srv://admin:admin@966444@nameage.qzstyap.mongodb.net/?retryWrites=true&w=majority&appName=nameage'; // Replace with your real connection string
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
